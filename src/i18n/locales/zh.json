@@ -211,6 +211,38 @@
           "description": "支持润色、语法检查和 PDF 图片识别导入。推荐模型 ID：gemini-flash-latest",
           "apiKey": "Gemini API Key",
           "modelId": "Gemini 模型 ID"
+        },
+        "claude": {
+          "title": "Claude (Anthropic)",
+          "description": "Anthropic 的 Claude 系列模型",
+          "apiKey": "API Key",
+          "modelId": "模型 ID",
+          "apiEndpoint": "API 端点"
+        },
+        "qwen": {
+          "title": "通义千问",
+          "description": "阿里云通义千问大模型",
+          "apiKey": "API Key",
+          "modelId": "模型 ID"
+        },
+        "zhipu": {
+          "title": "智谱 GLM",
+          "description": "智谱 AI 的 GLM 系列模型",
+          "apiKey": "API Key",
+          "modelId": "模型 ID"
+        },
+        "mimo": {
+          "title": "小米 MiMo",
+          "description": "小米 MiMo 大模型",
+          "apiKey": "API Key",
+          "modelId": "模型 ID"
+        },
+        "custom": {
+          "title": "自定义端点",
+          "description": "兼容 OpenAI 格式的自定义 API 端点",
+          "apiKey": "API Key",
+          "modelId": "模型名称",
+          "apiEndpoint": "API 端点 URL"
         }
       }
     },

@@ -210,6 +210,38 @@
           "description": "Supports polish, grammar check, and PDF image resume import. Recommended model: gemini-flash-latest",
           "apiKey": "Gemini API Key",
           "modelId": "Gemini Model ID"
+        },
+        "claude": {
+          "title": "Claude (Anthropic)",
+          "description": "Anthropic's Claude models",
+          "apiKey": "API Key",
+          "modelId": "Model ID",
+          "apiEndpoint": "API Endpoint"
+        },
+        "qwen": {
+          "title": "Qwen (Alibaba)",
+          "description": "Alibaba Cloud Qwen models",
+          "apiKey": "API Key",
+          "modelId": "Model ID"
+        },
+        "zhipu": {
+          "title": "Zhipu GLM",
+          "description": "Zhipu AI GLM series models",
+          "apiKey": "API Key",
+          "modelId": "Model ID"
+        },
+        "mimo": {
+          "title": "Xiaomi MiMo",
+          "description": "Xiaomi MiMo models",
+          "apiKey": "API Key",
+          "modelId": "Model ID"
+        },
+        "custom": {
+          "title": "Custom Endpoint",
+          "description": "OpenAI-compatible custom API endpoint",
+          "apiKey": "API Key",
+          "modelId": "Model Name",
+          "apiEndpoint": "API Endpoint URL"
         }
       }
     },
