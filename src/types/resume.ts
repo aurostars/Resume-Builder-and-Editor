@@ -1,3 +1,5 @@
+import { ALL_PRESET_COLORS } from "@/config/themeColors";
+
 export interface PhotoConfig {
   width: number;
   height: number;
@@ -158,17 +160,9 @@ export interface CustomItem {
 
 export const THEME_COLORS = [
   "#000000",
-  "#1A1A1A",
   "#333333",
-  "#4D4D4D",
   "#666666",
-  "#808080",
-  "#999999",
-  "#0047AB",
-  "#8B0000",
-  "#FF4500",
-  "#4B0082",
-  "#2E8B57",
+  ...ALL_PRESET_COLORS,
 ];
 
 export interface MenuSection {

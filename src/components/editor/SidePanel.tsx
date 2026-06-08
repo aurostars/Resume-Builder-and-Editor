@@ -19,6 +19,7 @@ import LayoutSetting from "./layout/LayoutSetting";
 import { useResumeStore } from "@/store/useResumeStore";
 import { cn } from "@/lib/utils";
 import { THEME_COLORS, MenuSection } from "@/types/resume";
+import { THEME_COLOR_GROUPS } from "@/config/themeColors";
 import { ColorPicker } from "@/components/ui/color-picker";
 import {
   Popover,
@@ -269,25 +270,48 @@ export function SidePanel({
             </ColorPicker>
           }
         >
-          <div className="flex flex-wrap gap-2.5 pt-1">
-            {THEME_COLORS.map((presetTheme) => (
-              <button
-                key={presetTheme}
-                className={cn(
-                  "relative group w-6 h-6 rounded-full overflow-hidden transition-all duration-200 focus:outline-none",
-                  themeColor === presetTheme
-                    ? "ring-2 ring-primary ring-offset-2 ring-offset-background"
-                    : "ring-1 ring-border hover:ring-primary/50 hover:scale-110"
-                )}
-                onClick={() => setThemeColor(presetTheme)}
-                title={presetTheme}
-              >
-                <div
-                  className="absolute inset-0"
-                  style={{ backgroundColor: presetTheme }}
-                />
-              </button>
+          <div className="space-y-3 pt-1">
+            {THEME_COLOR_GROUPS.map((group) => (
+              <div key={group.id} className="flex items-center gap-2">
+                <span className="text-xs text-muted-foreground w-16 shrink-0 truncate" title={group.name}>
+                  {group.name}
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {group.colors.map((color) => (
+                    <button
+                      key={color.id}
+                      title={color.name}
+                      onClick={() => debouncedSetColor(color.value)}
+                      className={cn(
+                        "w-6 h-6 rounded-full transition-all duration-200 focus:outline-none",
+                        themeColor === color.value
+                          ? "ring-2 ring-primary ring-offset-2 ring-offset-background"
+                          : "ring-1 ring-border hover:ring-primary/50 hover:scale-110"
+                      )}
+                      style={{ backgroundColor: color.value }}
+                    />
+                  ))}
+                </div>
+              </div>
             ))}
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-muted-foreground w-16 shrink-0">基础</span>
+              <div className="flex flex-wrap gap-2">
+                {["#000000", "#333333", "#666666"].map((c) => (
+                  <button
+                    key={c}
+                    onClick={() => debouncedSetColor(c)}
+                    className={cn(
+                      "w-6 h-6 rounded-full transition-all duration-200 focus:outline-none",
+                      themeColor === c
+                        ? "ring-2 ring-primary ring-offset-2 ring-offset-background"
+                        : "ring-1 ring-border hover:ring-primary/50 hover:scale-110"
+                    )}
+                    style={{ backgroundColor: c }}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </SettingCard>
 
