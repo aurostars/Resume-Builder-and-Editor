@@ -12,6 +12,7 @@ import { creativeConfig } from "./creative/config";
 import { editorialConfig } from "./editorial/config";
 import { swissConfig } from "./swiss/config";
 import { academicConfig } from "./academic/config";
+import { creativeProConfig } from "./creative-pro/config";
 
 // Import components
 import ClassicTemplate from "./classic";
@@ -24,6 +25,7 @@ import CreativeTemplate from "./creative";
 import EditorialTemplate from "./editorial";
 import SwissTemplate from "./swiss";
 import AcademicTemplate from "./academic";
+import CreativeProTemplate from "./creative-pro";
 
 export interface TemplateRegistryEntry {
   config: ResumeTemplate;
@@ -46,6 +48,7 @@ export const TEMPLATE_REGISTRY: TemplateRegistryEntry[] = [
   { config: editorialConfig, Component: EditorialTemplate },
   { config: swissConfig, Component: SwissTemplate },
   { config: academicConfig, Component: AcademicTemplate },
+  { config: creativeProConfig, Component: CreativeProTemplate },
 ];
 
 /** All template configs — drop-in replacement for the old DEFAULT_TEMPLATES */
