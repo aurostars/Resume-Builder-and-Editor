@@ -116,3 +116,35 @@ export const MarkdownGlassIcon = ({ className, isLoading }: GlassIconProps) => (
     </path>
   </svg>
 );
+
+export const WordGlassIcon = ({ className, isLoading }: GlassIconProps) => (
+  <svg viewBox="0 0 100 100" fill="none" className={className}>
+    <defs>
+      <filter id="word-glow"><feGaussianBlur stdDeviation="8" /></filter>
+      <linearGradient id="word-glass" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.7" />
+        <stop offset="100%" stopColor="#ffffff" stopOpacity="0.1" />
+      </linearGradient>
+      <linearGradient id="word-border" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
+        <stop offset="100%" stopColor="#ffffff" stopOpacity="0.2" />
+      </linearGradient>
+    </defs>
+    {/* Shadow blob */}
+    <rect x="25" y="25" width="45" height="55" rx="8" fill="#2B579A" filter="url(#word-glow)" opacity="0.75" />
+    {/* Solid base */}
+    <rect x="25" y="25" width="45" height="55" rx="8" fill="#1B3F7A" />
+    {/* Glass plate overlay */}
+    <rect x="15" y="15" width="55" height="65" rx="10" fill="url(#word-glass)" stroke="url(#word-border)" strokeWidth="1.5" />
+    {/* W letter */}
+    <text x="42.5" y="50" fill="#ffffff" fontSize="20" fontWeight="900" fontFamily="sans-serif" textAnchor="middle" opacity="0.95">W</text>
+    {/* Decorative folded corner */}
+    <path d="M70 15 L70 30 C70 33 67 36 64 36 L49 36" stroke="url(#word-border)" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.6" />
+    <rect x="30" y="60" width={isLoading ? "0" : "25"} height="4" rx="2" fill="#ffffff" opacity={isLoading ? "1" : "0.8"}>
+      {isLoading && <animate attributeName="width" values="5;30;5" dur="1.2s" repeatCount="indefinite" />}
+    </rect>
+    <rect x="30" y="68" width={isLoading ? "15" : "15"} height="4" rx="2" fill="#ffffff" opacity={isLoading ? "1" : "0.5"}>
+      {isLoading && <animate attributeName="width" values="20;5;20" dur="1.2s" repeatCount="indefinite" />}
+    </rect>
+  </svg>
+);

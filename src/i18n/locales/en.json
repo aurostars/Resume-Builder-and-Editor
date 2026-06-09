@@ -297,6 +297,7 @@
       "printDesc": "Save via system print dialog. Use as a fallback or for custom margins.",
       "jsonDesc": "Export your resume data as JSON to backup or transfer between devices.",
       "markdownDesc": "Convert to plain Markdown text for easy sharing with AI models.",
+      "wordDesc": "Export as Word document for further editing and formatting.",
       "privacyNotice": "Magic Resume promise never to collect, upload, or store any of your resume data. Your privacy is fully protected."
     },
     "button": {
@@ -304,9 +305,11 @@
       "exportPdf": "Export PDF (Server)",
       "exportJson": "Export JSON Config",
       "exportMarkdown": "Export Markdown",
+      "exportWord": "Word",
       "exporting": "Exporting...",
       "exportingJson": "Exporting...",
       "exportingMarkdown": "Exporting...",
+      "exportingWord": "Exporting...",
       "print": "Browser Print"
     },
     "toast": {
@@ -315,7 +318,9 @@
       "jsonSuccess": "Configuration exported successfully",
       "jsonError": "Configuration export failed",
       "markdownSuccess": "Markdown exported successfully",
-      "markdownError": "Markdown export failed"
+      "markdownError": "Markdown export failed",
+      "wordSuccess": "Word export successful",
+      "wordError": "Word export failed"
     }
   },
   "previewDock": {

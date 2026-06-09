@@ -298,6 +298,7 @@
       "printDesc": "调用系统打印工具另存为 PDF，当主渲染拥堵或需手动干预边距时的备用方案。",
       "jsonDesc": "保存您的配置档案副本。日后更换设备或清理缓存后，可使用此文件一键无损导入恢复进度。",
       "markdownDesc": "转换为极简的文本标记语言文件，方便快速粘贴给各种 AI 模型或是其他文本编辑器。",
+      "wordDesc": "导出为 Word 文档，方便进一步编辑和格式调整。",
       "privacyNotice": "魔方简历承诺绝不收集、上传或存储您的任何简历数据，您的隐私完全受到保护。"
     },
     "button": {
@@ -305,9 +306,11 @@
       "exportPdf": "PDF",
       "exportJson": "JSON配置",
       "exportMarkdown": "Markdown",
+      "exportWord": "Word 文档",
       "exporting": "导出中...",
       "exportingJson": "导出中...",
       "exportingMarkdown": "导出中...",
+      "exportingWord": "导出中...",
       "print": "PDF(备份)"
     },
     "toast": {
@@ -316,7 +319,9 @@
       "jsonSuccess": "配置导出成功",
       "jsonError": "配置导出失败",
       "markdownSuccess": "Markdown 导出成功",
-      "markdownError": "Markdown 导出失败"
+      "markdownError": "Markdown 导出失败",
+      "wordSuccess": "Word 文档导出成功",
+      "wordError": "Word 文档导出失败"
     }
   },
   "workbench": {
