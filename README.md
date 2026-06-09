@@ -1,157 +1,244 @@
-<div align="center">
+# Magic Resume 增强版 - 智能简历编辑工具
 
-# ✨ Magic Resume ✨
+一款本地运行的智能简历编辑器，基于 [magic-resume](https://github.com/JOYCEQL/magic-resume) 增强改造。支持多种 AI 大模型接入、丰富的模板和配色方案、AI 辅助写作功能以及多格式导出。
 
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-![TanStack Start](https://img.shields.io/badge/TanStack_Start-latest-black)
-![Framer Motion](https://img.shields.io/badge/Framer_Motion-10.0-purple)
+所有数据存储在浏览器本地，API Key 不会上传到任何服务器。
 
-<a href="https://trendshift.io/repositories/13077" target="_blank"><img src="https://trendshift.io/api/badge/repositories/13077" alt="Magic Resume | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+---
 
-[简体中文](./README.zh-CN.md) | English
+## 功能特性
 
-</div>
+### AI 模型支持（9 个提供商 + 自定义端点）
 
-Magic Resume is a modern online resume editor that makes creating professional resumes simple and enjoyable. Built with TanStack Start and Framer Motion, it supports real-time preview and custom themes.
+| 提供商 | 默认模型 | 说明 |
+|--------|----------|------|
+| DeepSeek | deepseek-chat | 国产大模型，性价比高 |
+| 豆包 (ByteDance) | 用户指定 | 字节跳动火山引擎 |
+| OpenAI | 用户指定 | GPT 系列，支持自定义端点 |
+| Gemini (Google) | gemini-flash-latest | Google AI Studio |
+| Claude (Anthropic) | claude-sonnet-4-20250514 | Anthropic Messages API |
+| 通义千问 (阿里) | qwen-plus | 阿里云 DashScope |
+| 智谱 GLM | glm-4-flash | 智谱 AI 开放平台 |
+| 小米 MiMo | 用户指定 | 小米 AI 开放平台 |
+| 自定义端点 | 用户指定 | 兼容 OpenAI 格式的任意 API |
 
-## 📸 Screenshots
+所有 OpenAI 兼容的提供商共享统一的流式 SSE 解析逻辑，Claude 和 Gemini 各有独立适配器。
 
-<img width="1920" height="1440" alt="336_1x_shots_so" src="https://github.com/user-attachments/assets/18969a17-06f8-4a4b-94eb-284ba8442620" />
+### 简历模板（11 套）
 
+- **经典** — 标准单栏布局
+- **现代** — 清新现代风格
+- **模块标题背景色** — 标题区域带彩色背景
+- **时间线** — 左侧时间轴布局
+- **极简** — 最小化装饰
+- **优雅** — 精致排版
+- **创意** — 活泼的设计风格
+- **编辑** — 杂志编辑风格
+- **瑞士** — Swiss Style 网格布局
+- **学术/科研** — 适合学术人员，衬线字体，紧凑排版，突出论文和科研项目
+- **设计师/创意岗** — 左右双栏（30%/70%），紫色调，大留白，适合设计师和创意岗位
 
-## ✨ Features
+### 主题色预设（3 组 15 色 + 基础色 + 自定义）
 
-- 🚀 Built with TanStack Start
-- 💫 Smooth animations (Framer Motion)
-- 🎨 Custom theme support
-- 📱 Responsive design
-- 🌙 Dark mode
-- 📤 Export to PDF
-- 🔄 Real-time preview
-- 💾 Auto-save
-- 🔒 Local storage
+| 色组 | 风格 | 包含颜色 |
+|------|------|----------|
+| 清新雅致 | 淡雅、清爽、专业 | 雾蓝、湖水蓝、天青、灰绿、竹青 |
+| 柔和浪漫 | 轻柔、文艺、有气质 | 紫藤、玫瑰粉、杏仁、薄荷奶绿、淡丁香 |
+| 沉稳商务 | 稳重、大气、可信赖 | 深海蓝、墨绿、暗紫、深棕、石墨灰 |
 
-## 🛠️ Tech Stack
+支持 react-colorful 自定义任意颜色。
 
-- TanStack Start
-- TypeScript
-- Motion
-- Tiptap
-- Tailwind CSS
-- Zustand
-- Shadcn/ui
-- Lucide Icons
+### AI 辅助功能
 
-## 🚀 Quick Start
+| 功能 | 说明 |
+|------|------|
+| 一键生成简历 | 输入目标岗位 + 个人经历要点，AI 生成完整结构化简历 |
+| 针对 JD 优化 | 粘贴职位描述，AI 分析简历与 JD 的匹配度并给出修改建议 |
+| STAR 法则改写 | 将工作经历描述改写为 Situation-Task-Action-Result 格式 |
+| 多语言翻译 | 将整份简历翻译为中文或英文，生成新副本不覆盖原文 |
+| 内容润色 | 优化措辞，使表达更专业 |
+| 语法纠错 | 修正语法和拼写错误 |
 
-1. Clone the project
+### 导出格式
+
+- **PDF** — 高精度渲染，100% 还原格式
+- **PDF (备份)** — 调用系统打印另存为 PDF
+- **Word (.docx)** — 纯客户端生成，方便后续编辑
+- **Markdown (.md)** — 标准 CommonMark，适合粘贴给 AI 或其他编辑器
+- **JSON** — 完整配置备份，支持一键导入恢复
+
+---
+
+## 快速开始
+
+### 环境要求
+
+- Node.js >= 18
+- pnpm >= 8
+
+### 安装和运行
 
 ```bash
-git clone git@github.com:JOYCEQL/magic-resume.git
+# 克隆项目
+git clone <your-repo-url>
 cd magic-resume
-```
 
-2. Install dependencies
-
-```bash
+# 安装依赖
 pnpm install
-```
 
-3. Start development server
-
-```bash
+# 启动开发服务器
 pnpm dev
 ```
 
-4. Open browser and visit `http://localhost:3000`
+启动后在浏览器打开 `http://localhost:5173` 即可使用。
 
-## 📦 Build and Deploy
+### 构建生产版本
 
 ```bash
 pnpm build
+pnpm start
 ```
 
+---
 
-## 🐳 Docker Deployment
+## 使用指南
 
-### Docker Compose
+### 1. 配置 AI 模型
 
-1. Ensure you have Docker and Docker Compose installed
+进入 **设置 → AI 配置**，选择你使用的 AI 提供商：
 
-2. Run the following command in the project root directory:
+1. 输入对应的 API Key
+2. 如果需要，填写模型 ID（如 `deepseek-chat`、`glm-4-flash`）
+3. 对于自定义端点，填写完整的 API 基础 URL（如 `http://localhost:11434/v1`）
 
-```bash
-docker compose up -d
+配置保存在浏览器 LocalStorage 中，不会上传。
+
+### 2. 创建简历
+
+- **手动创建**：选择一个模板，逐项填写内容
+- **AI 一键生成**：点击"AI 生成"，输入目标岗位和个人经历要点，AI 自动生成完整简历
+
+### 3. 编辑和优化
+
+- 在编辑器中直接修改各区块内容
+- 使用 **STAR 改写** 按钮优化工作经历描述
+- 使用 **JD 优化** 功能对齐目标岗位要求
+- 使用 **润色** 和 **语法纠错** 提升内容质量
+
+### 4. 调整样式
+
+- 在右侧面板选择模板
+- 选择主题色（预设色组或自定义）
+- 调整字体大小、间距、边距等全局设置
+- 拖拽排序各区块顺序
+
+### 5. 导出简历
+
+点击导出按钮，选择目标格式：
+- 投递简历推荐 **PDF**
+- 需要继续编辑选 **Word**
+- 分享给 AI 选 **Markdown**
+- 备份数据选 **JSON**
+
+---
+
+## 项目结构
+
+```
+src/
+├── lib/ai/providers/       # AI 提供商适配器（统一接口）
+│   ├── types.ts            # AIProvider 接口定义
+│   ├── openai-compatible.ts # OpenAI 兼容基座工厂
+│   ├── claude.ts           # Anthropic Messages API 适配
+│   ├── gemini.ts           # Google Gemini SDK 适配
+│   └── {provider}.ts       # 各提供商实例
+├── config/
+│   ├── themeColors.ts      # 主题色预设配置
+│   └── prompts/            # AI 功能 System Prompt
+├── components/
+│   ├── templates/          # 简历模板
+│   │   ├── academic/       # 学术/科研模板
+│   │   ├── creative-pro/   # 设计师/创意岗模板
+│   │   └── registry.ts    # 模板注册表
+│   └── ai/                 # AI 功能 UI 组件
+├── routes/api/             # 后端 API 路由（TanStack Start）
+├── hooks/useAIAction.ts    # AI 流式请求通用 Hook
+├── store/useAIConfigStore.ts # AI 配置状态管理
+└── utils/
+    ├── export.ts           # PDF/JSON/Markdown 导出
+    ├── exportDocx.ts       # Word 导出
+    └── markdown.ts         # Markdown 生成
 ```
 
-This will:
+---
 
-- Automatically build the application image
-- Start the container in the background
+## 技术栈
 
+- **框架**：TanStack Start + Vite + React
+- **状态管理**：Zustand (persist middleware)
+- **样式**：Tailwind CSS + HeroUI
+- **富文本**：Tiptap
+- **颜色选择**：react-colorful
+- **Word 生成**：docx (纯 JS，零原生依赖)
+- **PDF 导出**：远程渲染服务 / 浏览器打印
+- **国际化**：支持中文/英文
 
-## 📝 License and Commercial Use
+---
 
-The source code of this project is open-sourced under the **Apache 2.0** license, but with **strict commercial use restrictions**:
+## 自定义端点使用示例
 
-- **Free for Personal Use**: Free to use purely for personal, non-commercial purposes (e.g., personal learning, creating your own resume).
-- **Commercial License Required**: Unauthorized commercial use is strictly prohibited. Any organization or individual that provides it as a service (SaaS/PaaS, etc.) to the public for profit, uses it for enterprise commercial operations, or conducts secondary commercial development, **must obtain a commercial license, regardless of whether the source code has been modified**.
+如果你使用 Ollama、LM Studio、vLLM 等本地模型服务，选择"自定义端点"：
 
-Please see the [LICENSE](LICENSE) file for detailed terms.
+| 工具 | 端点 URL | 模型名 |
+|------|----------|--------|
+| Ollama | `http://localhost:11434/v1` | `qwen2.5:7b` |
+| LM Studio | `http://localhost:1234/v1` | `loaded-model` |
+| vLLM | `http://localhost:8000/v1` | 你部署的模型名 |
 
-## 🗺️ Roadmap
+API Key 填任意非空字符串即可（本地服务通常不校验）。
 
-- [x] AI-assisted writing
-- [x] Multi-language support
-- [ ] Support for more resume templates
-- [ ] Support for more export formats
-- [ ] Import PDF, Markdown, etc.
-- [x] Custom model
-- [x] Auto one page
-- [ ] Online resume hosting
+---
 
-## 📈 Star History
+## 增强改造说明
 
-<a href="https://star-history.com/#JOYCEQL/magic-resume&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=JOYCEQL/magic-resume&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=JOYCEQL/magic-resume&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=JOYCEQL/magic-resume&type=Date" />
- </picture>
-</a>
+本项目基于原版 magic-resume 进行了以下增强：
 
-## 📞 Contact
+### Phase 1: API 提供商扩展
+- 新建统一的 AIProvider 接口和提供商注册表
+- 新增 5 个提供商（Claude、通义千问、智谱、MiMo、自定义端点）
+- 重构 AI 配置 Store，支持动态提供商切换
+- 简化 API 路由逻辑（从 ~200 行降到 ~40 行）
 
-You can follow the latest updates via:
+### Phase 2: 主题色预设
+- 新增 15 个温和色彩预设，按 3 组分类展示
+- 保留自定义颜色选择器
 
-- Author: Siyue
-- X: @GuangzhouY81070
-- Discord: Join our community https://discord.gg/9mWgZrW3VN
-- Email: 18806723365@163.com
+### Phase 3: 新增模板
+- 学术/科研模板：单栏、衬线字体、紧凑排版
+- 设计师/创意岗模板：双栏布局、无衬线字体、大留白
 
+### Phase 4: AI 新功能
+- 一键生成整份简历
+- 针对 JD 定制优化（对比分析 + 修改建议）
+- STAR 法则改写（内联预览 + 一键替换）
+- 多语言翻译（中英互译，生成副本）
+- 通用 `useAIAction` Hook 支持流式响应和中断
 
-- Project Homepage: https://github.com/JOYCEQL/magic-resume
+### Phase 5: 导出格式
+- 新增 Word (.docx) 导出（纯客户端，零服务端依赖）
+- 验证并保留已有 Markdown 导出
 
-## 🌟 Support
+---
 
-If you find this project helpful, please give it a star ⭐️
+## 隐私说明
 
-## ❤️ Sponsors
+- 所有简历数据存储在浏览器 LocalStorage，不会上传到任何服务器
+- API Key 仅存储在本地，直接从浏览器发送到对应 AI 服务商
+- PDF 导出使用远程渲染服务（可替换为本地 Puppeteer）
+- Word 和 Markdown 导出完全在客户端完成
 
-<div align="center">
-  <h3>Sponsors</h3>
-  <p>If you sponsored this project but are not listed here, please contact me.</p>
-  <p>
-    <a href="https://github.com/yj147">
-      <img src="https://github.com/yj147.png?size=40" width="40" height="40" alt="@yj147" />
-    </a>
-    <a href="https://github.com/someone1128">
-      <img src="https://github.com/someone1128.png?size=40" width="40" height="40" alt="@someone1128" />
-    </a>
-    <!-- Add more sponsors here:
-    <a href="https://github.com/<username>">
-      <img src="https://github.com/<username>.png?size=40" width="40" height="40" alt="@<username>" />
-    </a>
-    -->
-  </p>
-</div>
+---
+
+## License
+
+基于 [magic-resume](https://github.com/JOYCEQL/magic-resume) 开源项目改造，遵循 Apache 2.0 协议。
