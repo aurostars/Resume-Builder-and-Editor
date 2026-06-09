@@ -1,4 +1,4 @@
-# Magic Resume 增强版 - 智能简历编辑工具
+# 智能简历编辑工具
 
 一款本地运行的智能简历编辑器，基于 [magic-resume](https://github.com/JOYCEQL/magic-resume) 增强改造。支持多种 AI 大模型接入、丰富的模板和配色方案、AI 辅助写作功能以及多格式导出。
 
